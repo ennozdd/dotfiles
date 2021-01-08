@@ -1,0 +1,46 @@
+color=#f3f4f5
+separator_block_width=15
+markup=none
+
+SCRIPT_DIR=./i3blocks-contrib
+
+[dunst]
+command=$SCRIPT_DIR/dunst/dunst
+interval=once
+format=json
+markup=pango
+#min_width=50
+#align=center
+#DUNST_MUTE=off
+
+[calendar]
+command=$SCRIPT_DIR/calendar/calendar
+interval=1
+LABEL= 
+DATEFMT=+%H:%M:%S
+# SHORTFMT=+%H:%M:%S
+HEIGHT=180
+WIDTH=220
+
+[temperature]
+command=$SCRIPT_DIR/temperature/temperature
+label=TEMP 
+interval=10
+
+
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
+interval=1
+signal=10
+LONG_FORMAT="${SYMB}${VOL}%"
+SHORT_FORMAT="${SYMB}${VOL}%"
+#DEFAULT_COLOR="#f3f4f5"
+#USE_ALSA_NAME=1
+
+[ram]
+command=echo -n '  '; $SCRIPT_DIR/memory/memory | grep -E -o '^[0-9]+.[0-9]G'
+interval=30
+
+[disk-home]
+command=echo -n '  '; df -h -l --output='used' "$HOME" | grep -E -o '[0-9]+G'
+interval=30
