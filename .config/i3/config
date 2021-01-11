@@ -156,15 +156,6 @@ bar {
         status_command i3blocks
 }
 
-# Autostart
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-exec --no-startup-id copyq 
-exec --no-startup-id dunst
-exec --no-startup-id thunar --daemon
-exec --no-startup-id redshift
-exec --no-startup-id sh -c ~/.screenlayout/screen.sh
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id nm-applet
 
 # Power Management
 set $Locker i3lock && sleep 1
@@ -193,8 +184,6 @@ for_window [class="^.*"] border pixel 0
 gaps inner 20
 gaps outer 2
 smart_borders on
-
-
 
 # Workspaces
 assign [class="qBittorrent"] $ws7
@@ -236,7 +225,9 @@ set $fg      #f8f8f2
 set $cyan    #8be9fd
 set $green   #50fa7b
 set $magenta #ff79c6
-set $comment #6272a4
+#set $magenta #ff79c6
+set $comment #4F83A5
+#B96262
 set $purple  #bd93f9
 
 # Set some nice colors      border	 background text     indicator
@@ -246,3 +237,13 @@ client.focused_inactive     $bg      $bg        $green   $bg
 client.urgent               $bg      $bg        $magenta $bg
 client.placeholder          $bg      $bg        $cyan    $bg
 
+
+# Autostart
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec --no-startup-id copyq 
+exec --no-startup-id dunst
+exec --no-startup-id thunar --daemon
+exec --no-startup-id redshift
+exec --no-startup-id sh -c ~/.screenlayout/screen.sh
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id nm-applet
