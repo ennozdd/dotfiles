@@ -156,7 +156,6 @@ bar {
         status_command i3blocks
 }
 
-
 # Power Management
 set $Locker i3lock && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -175,8 +174,8 @@ mode "$mode_system" {
 bindsym $mod+Pause mode "$mode_system"
 
 # Screenshot
-bindsym Print exec "scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'"
-bindsym $mod+Print exec "scrot -u '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'"
+bindsym Print exec "scrot '%Y-%m-%d_$wx$h-%T.png' -e 'mv $f ~/Pictures/Screenshots'"
+bindsym $mod+Print exec "scrot -u '%Y-%m-%d_$wx$h-%T.png' -e 'mv $f ~/Pictures/Screenshots'"
 
 
 # Gaps
@@ -185,10 +184,6 @@ gaps inner 20
 gaps outer 2
 smart_borders on
 
-# Workspaces
-assign [class="qBittorrent"] $ws7
-assign [class="firefox"] $ws1
-assign [class="discord"] $ws7
 
 # Floating windows
 for_window [class="Thunar"] floating enable border normal
@@ -218,6 +213,14 @@ bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec qbittorrent
 bindsym $mod+F5 exec thunderbird
 
+# Workspaces
+assign [class="firefox"] $ws1
+assign [class="Thunderbird$"] $ws2
+for_window [class="^Spotify"] move to workspace $ws2
+assign [class="qBittorrent"] $ws4
+assign [class="discord"] $ws4
+workspace $ws5 output DVI-D-0
+
 # Defining colors
 set $bg      #282A36
 set $lg      #44475a
@@ -225,9 +228,7 @@ set $fg      #f8f8f2
 set $cyan    #8be9fd
 set $green   #50fa7b
 set $magenta #ff79c6
-#set $magenta #ff79c6
 set $comment #4F83A5
-#B96262
 set $purple  #bd93f9
 
 # Set some nice colors      border	 background text     indicator
@@ -243,7 +244,7 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id copyq 
 exec --no-startup-id dunst
 exec --no-startup-id thunar --daemon
-exec --no-startup-id redshift
+exec --no-startup-id redshift -l "40.19567:29.0364"
 exec --no-startup-id sh -c ~/.screenlayout/screen.sh
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
