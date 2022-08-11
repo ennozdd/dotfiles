@@ -6,7 +6,8 @@ set laststatus=2
 set incsearch
 set showcmd
 set shiftwidth=4  
-set expandtab     
+set expandtab   
+set nowrap
 set ai 
 set number
 set ruler
